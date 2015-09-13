@@ -12,6 +12,10 @@ module.exports = function(app) {
 		.get(users.requiresLogin, usuariosMobile.list)
 		.post(users.requiresLogin, usuariosMobile.create);
 
+	app.route('/api/porta/:estado')
+		.get(usuariosMobile.estadoPorta);
+	app.param('estado', usuariosMobile.estadoPorta);
+
 	app.route('/api/mobile/usuario')
 		.get(passport.authenticate('bearer', {
         	session: false
@@ -26,5 +30,5 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, usuariosMobile.hasAuthorization, usuariosMobile.delete);
 
 	// Finish by binding the article middleware
-	app.param('usuarioMobileId', usuariosMobile.usuarioMobileByID);
+	app.param('usuarioMobileId', usuariosMobile.usuarioMobileByID);	
 };

@@ -98,6 +98,10 @@ exports.usuarioMobileByID = function(req, res, next, id) {
 	});
 };
 
+exports.estadoPorta = function(req, res, next, estadoPorta) {
+	res.json({estado: estadoPorta});
+};
+
 /**
  * usuarioMobile authorization middleware
  */
